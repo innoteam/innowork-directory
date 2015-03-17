@@ -1,0 +1,89 @@
+<?xml version='1.0'?>
+<application>
+
+	<definition>
+		<idname>innowork-directory</idname>
+		<release>
+			<version>2.0</version>
+			<date>2009/03/10</date>
+			<changesfile>CHANGES</changesfile>
+		</release>
+		<description>Innowork Directory</description>
+		<category>intranet</category>
+		<iconfile></iconfile>
+		<dependencies>
+			<dependency>innowork-core[3.1]</dependency>
+			<dependency>phplotlib[5.0-3]</dependency>
+            <suggestion>innowork-projects</suggestion>
+		</dependencies>
+		<options>
+			<!-- <option></option> -->
+		</options>
+		<legal>
+			<author>
+				<name>Innoteam S.r.l.</name>
+				<email>info@innoteam.it</email>
+				<web>http://www.innoteam.it/</web>
+			</author>
+			<copyright>Copyright (c) 2002-2013 Innoteam S.r.l.</copyright>
+			<license>Commercial</license>
+			<licensefile>LICENSE</licensefile>
+		</legal>
+		<support>
+			<supportemail>helpdesk@innoteam.it</supportemail>
+			<bugsemail>helpdesk@innoteam.it</bugsemail>
+			<maintainer>
+				<name>Alex Pagnoni</name>
+				<email>alex.pagnoni@innoteam.it</email>
+			</maintainer>
+		</support>
+	</definition>
+
+	<components>
+
+		<catalog name="innowork-directory" />
+
+		<domaingroup name="contacts"
+			catalog="innowork-directory::directory_misc" />
+
+		<domainpanel name="innoworkdirectory"
+			file="innoworkdirectory.php" themeicon="identity" themeicontype="apps"
+			catalog="innowork-directory::directory_misc"
+			category="contacts" />
+
+		<domainpanel name="innoworkcontacts"
+			file="innoworkcontacts.php" themeicon="identity" themeicontype="apps"
+			catalog="innowork-directory::directory_misc"
+			category="contacts" />
+
+		<domaintable name="innowork_directory_companies"
+			file="innowork_directory_companies.xml" />
+		<domaintable name="innowork_directory_contacts"
+			file="innowork_directory_contacts.xml" />
+		<domaintable name="innowork_directory_notes"
+			file="innowork_directory_notes.xml" />
+
+		<wuiwidget name="innoworkcontacts"
+			file="WuiInnoworkcontacts.php" />
+		<wuiwidget name="innoworkcontactslist"
+			file="WuiInnoworkcontactslist.php" />
+
+		<innoworkitemtype name="directorycontact" file="directorycontact"
+			catalog="innowork-directory::directory_misc"
+			classfile="innowork/directory/InnoworkContact.php" classname="InnoworkContact"
+			icon="identity" icontype="apps" domainpanel="innoworkcontacts"
+			adminevent="contacts" miniicon="view_detailed"
+			summaryname="directorycontact-name" showmode="app" />
+		<innoworkitemtype name="directorycompany"
+			file="directorycompany"
+			catalog="innowork-directory::directory_misc"
+			classfile="innowork/directory/InnoworkCompany.php" classname="InnoworkCompany"
+			icon="identity" icontype="apps" domainpanel="innoworkdirectory"
+			miniicon="view_detailed" summaryname="directorycompany-name"
+			showmode="app" />
+
+		<class name="innowork/directory/InnoworkCompany.php" />
+		<class name="innowork/directory/InnoworkContact.php" />
+
+	</components>
+</application>
